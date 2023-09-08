@@ -22,4 +22,39 @@ class Controller
             exit();
         }
     }
+
+    public function certification(){
+      $errorMessages = [];
+      if(empty($_POST['email'])){
+          $errorMessages['email'] = 'メールアドレスを入力してください。';
+      }
+  
+      if(empty($_POST['password'])){
+          $errorMessages['password'] = 'パスワードを入力してください';
+      }
+  
+      if(!empty($errorMessages)){
+          // バリデーション失敗
+          $_SESSION['errorMessages'] = $errorMessages;
+          $_SESSION['post'] = $_POST;
+          header('Location: /user/log-in');
+      }else{
+          //認証処理
+          $user = new User;
+          $result = $user->certification(
+              $_POST['email'],
+              $_POST['password']
+          );
+  
+          if(is_array($result)){
+              $_SESSION['auth'] = $result['id'];
+              header("Location: /");
+              exit();
+          }else{
+              $errorMessages['auth'] = 'メールアドレスまたはパスワードが誤っています。';
+              $this->view('user/login', ['post' => $_POST, 'errorMessages' => $errorMessages]);
+          }
+      }
+  }
+  
 }

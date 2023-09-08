@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.2, created on 2023-09-07 07:49:00
+/* Smarty version 4.3.2, created on 2023-09-08 08:33:10
   from '/Applications/MAMP/htdocs/mvc_app/Views/layout/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.2',
-  'unifunc' => 'content_64f9806caf36a6_00381142',
+  'unifunc' => 'content_64fadc469cfa81_85743326',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e89fa74dbec72cf49313f4ca79195b58f42dc68d' => 
     array (
       0 => '/Applications/MAMP/htdocs/mvc_app/Views/layout/header.tpl',
-      1 => 1694072800,
+      1 => 1694154329,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64f9806caf36a6_00381142 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64fadc469cfa81_85743326 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
     <div class="col-md-12 col-xs-10 px-0" style="background-color:lightgray;">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color:lightgray;">
@@ -54,11 +54,11 @@ function content_64f9806caf36a6_00381142 (Smarty_Internal_Template $_smarty_tpl)
                             </li>
                         <?php } else { ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">マイページ</a>
+                                <a class="nav-link" href="/user/my-page">マイページ</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">ログアウト</a>
+                                <a class="nav-link" href="/user/log-out" onclick="return confirm('ログアウトしますか?')">ログアウト</a>
                             </li>
                         <?php }?>
                     </ul>

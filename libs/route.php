@@ -28,6 +28,15 @@ function route($path, $httpMethod){
                   case ['create', 'post']:
                       $methodName = 'create';
                       break;
+                  case ['log-out', 'get']:
+                      $methodName = 'logOut';
+                      break;
+                  case ['certification', 'post']:
+                      $methodName = 'certification';
+                      break;
+                  case ['my-page', 'get']:
+                      $methodName ='myPage';
+                      break;
                     }
                 break;
 

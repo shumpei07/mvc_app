@@ -31,11 +31,11 @@
                             </li>
                         {else}
                             <li class="nav-item">
-                                <a class="nav-link" href="#">マイページ</a>
+                                <a class="nav-link" href="/user/my-page">マイページ</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">ログアウト</a>
+                                <a class="nav-link" href="/user/log-out" onclick="return confirm('ログアウトしますか?')">ログアウト</a>
                             </li>
                         {/if}
                     </ul>

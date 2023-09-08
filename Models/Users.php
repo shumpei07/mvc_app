@@ -59,4 +59,48 @@ class User extends Db
         }
 
     }
+
+    public function certification(string $email, string $password){
+      try{
+          $query = 'SELECT id, password FROM users WHERE email = :email';
+          $stmt = $this->dbh->prepare($query);
+          $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+          $stmt->execute();
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          
+          if (is_array($result) && count($result) === 1) {
+              $result_password = $result[0]['password'];
+              if (password_verify($password, $result_password)) {
+                  return $result[0];
+              }
+              return false;
+          } else {
+              return false;
+          }
+
+          } catch (PDOException $e) {
+              echo "認証エラー: " . $e->getMessage() . "\n";
+              exit();
+          }
+    }
+
+        /**
+    * マイページ表示用のユーザーデータを取得して返却する
+    *
+    * @param string $id ユーザーID
+    * @return stdClass object型で取得したユーザーのデータを返却する
+    */
+    public function getMyPage(string $id): stdClass
+    {
+        try{
+          $query = 'SELECT * FROM users WHERE id = :id';
+          $stmt = $this->dbh->prepare($query);
+          $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+          $stmt->execute();
+          return $stmt->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+          echo "認証エラー: ". $e->getMessage(). "\n";
+          exit();
+          }
+    }
 }

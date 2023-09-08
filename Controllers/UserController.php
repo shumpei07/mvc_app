@@ -7,11 +7,27 @@ class UserController extends Controller
 {
     public function logIn()
     {
-        $this->view('user/login');
+      if(is_numeric($this->getAuth())){
+        // ログイン中の場合はトップページへリダイレクト
+        header('Location: /');
+        exit();
     }
+    $errorMessages = $_SESSION['errorMessages'] ?? [];
+    $post = $_SESSION['post'] ?? [];
+    $_SESSION['errorMessages'] = [];
+    $_SESSION['post'] = [];
+    $this->view('user/login');
+    }
+
+    
 
     public function signUp()
     {
+      if(is_numeric($this->getAuth())){
+        // ログイン中の場合はトップページへリダイレクト
+        header('Location: /');
+        exit();
+      }
       $errorMessages = $_SESSION['errorMessages'] ?? [];
       $post = $_SESSION['post'] ?? [];
       $_SESSION['errorMessages'] = [];
@@ -70,7 +86,8 @@ class UserController extends Controller
                 header('Location: /user/signup');
             }
         }
-      }
+    }
+
       /**
      * ログイン状態を取得する
      * @return string|false ログイン状態の場合はuserId  未ログイン状態の場合はfalseを返却する
@@ -85,5 +102,18 @@ class UserController extends Controller
       $_SESSION['auth'] = false;
       header('Location: /');
       exit();
+    }
+
+    public function myPage()
+    {
+      $userId = $this->getAuth();
+      if($userId === false){
+          header('Location: /');
+          exit();
+      }
+  
+      $user = new User;
+      $result = $user->getMyPage($userId);
+      $this->view('user/mypage', ['data' => $result, 'auth' => $userId]);
     }
 }
