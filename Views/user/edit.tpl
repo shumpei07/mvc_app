@@ -49,7 +49,7 @@
 
                 <div class="edit-button">
                     <input type="submit" class="button" value="この内容で登録する">
-                    <a href="#" class="button mt-4" onclick="return confirm('本当に退会しますか?')">退会する</a>
+                    <a href="/user/delete" class="button mt-4" onclick="return confirm('本当に退会しますか?')">退会する</a>
                 </div>
             </form>
         </div>

@@ -198,5 +198,17 @@ class UserController extends Controller
         }
       }
 
-      
+      public function delete()
+      {
+        $userId = $_SESSION['auth'] ?? false;
+        if($userId === false){
+            header('Location: /');
+            exit();
+        }
+        $user = new User;
+        $user->deleteUserAccount($userId);
+        $_SESSION['auth'] = false;
+        header('Location: /');
+        exit();
+      }
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.2, created on 2023-09-11 07:34:26
+/* Smarty version 4.3.2, created on 2023-09-11 08:47:22
   from '/Applications/MAMP/htdocs/mvc_app/Views/user/edit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.2',
-  'unifunc' => 'content_64fec3028d1a18_03159638',
+  'unifunc' => 'content_64fed41aaf0a06_69677870',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8af8284e340e5b48c3ede9960c18aaf82ced3432' => 
     array (
       0 => '/Applications/MAMP/htdocs/mvc_app/Views/user/edit.tpl',
-      1 => 1694414616,
+      1 => 1694421572,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:layout/footer.tpl' => 1,
   ),
 ),false)) {
-function content_64fec3028d1a18_03159638 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64fed41aaf0a06_69677870 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +83,7 @@ function content_64fec3028d1a18_03159638 (Smarty_Internal_Template $_smarty_tpl)
 
                 <div class="edit-button">
                     <input type="submit" class="button" value="この内容で登録する">
-                    <a href="#" class="button mt-4" onclick="return confirm('本当に退会しますか?')">退会する</a>
+                    <a href="/user/delete" class="button mt-4" onclick="return confirm('本当に退会しますか?')">退会する</a>
                 </div>
             </form>
         </div>

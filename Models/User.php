@@ -161,5 +161,27 @@ class User extends Db
 
     }
 
-
+    /**
+ * ユーザーIDに対応するユーザーのデータをテーブルから削除する
+ * @param string $id ユーザーID
+ * @return void
+ */
+    public function deleteUserAccount(string $id) 
+    {
+    try{
+        $this->dbh->beginTransaction();
+        $query = 'DELETE FROM users WHERE id = :id';
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        // トランザクションを完了することでデータの書き込みを確定させる
+        $this->dbh->commit();
+        return;
+    } catch (PDOException $e) {
+        // 不具合があった場合トランザクションをロールバックして変更をなかったコトにする。
+        $this->dbh->rollBack();
+        echo "退会失敗: " . $e->getMessage() . "\n";
+        exit();
+    }
+    }
 }
