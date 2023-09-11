@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="edit-button">
-                    <a href="#" class="button">プロフィールの編集</a>
+                    <a href="/user/edit" class="button">プロフィールの編集</a>
                 </div>
             </div>
         {include file="layout/footer.tpl"}

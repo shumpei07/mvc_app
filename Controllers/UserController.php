@@ -1,7 +1,7 @@
 <?php
 require_once ROOT_PATH.'Controllers/Controller.php';
 
-require_once ROOT_PATH . 'Models/Users.php';
+require_once ROOT_PATH . 'Models/User.php';
 
 class UserController extends Controller
 {
@@ -116,4 +116,87 @@ class UserController extends Controller
       $result = $user->getMyPage($userId);
       $this->view('user/mypage', ['data' => $result, 'auth' => $userId]);
     }
+
+    public function edit()
+    {
+      $userId = $this->getAuth();
+      if($userId === false){
+          header('Location: /');
+          exit();
+      }
+
+      $user = new User;
+      $result = $user->getMyPage($userId);
+      $errorMessages = $_SESSION['errorMessages'] ?? [];
+      $post = $_SESSION['post'] ?? [];
+      $_SESSION['errorMessages'] = [];
+      $_SESSION['post'] = [];
+      if(empty($errorMessages))
+      {
+          $this->view('user/edit', ['data' => $result, 'auth' => $userId]);
+      }else{
+          $this->view('user/edit', ['data' => $post,   'auth' => $userId, 'errorMessages' => $errorMessages]);
+      }
+    }
+
+      public function update()
+      {
+        $errorMessages = [];
+
+        $userId = $this->getAuth();
+        if($userId === false){
+            // 未ログインの場合はトップページへリダイレクト
+            header('Location: /');
+            exit();
+        }
+
+        if(empty($_POST['name'])){
+            $errorMessages['name'] = '氏名を入力してください。';
+        }
+
+        if(empty($_POST['kana'])){
+            $errorMessages['kana'] = 'ふりがなを入力してください。';
+        }
+
+        if(empty($_POST['email'])){
+            $errorMessages['email'] = 'メールアドレスを入力してください。';
+        }
+
+        if(empty($_POST['password'])) {
+            // passwordが空の場合はpasswordを更新しないためバリデーションをチェックしない
+        }else{
+            if($_POST['password'] !== $_POST['password-confirmation']){
+                $errorMessages['password-confirmation'] = '確認用パスワードが正しくありません。';
+            }
+        }
+
+        if(!empty($errorMessages)){
+            // バリデーション失敗
+            $_SESSION['errorMessages'] = $errorMessages;;
+            $_SESSION['post'] = $_POST;
+            header('Location: /user/edit');
+        }else{
+            // 更新処理
+            $user = new User;
+            $result = $user->update(
+                $userId,
+                $_POST['name'],
+                $_POST['kana'],
+                $_POST['email'],
+                $_POST['password']
+            );
+            
+            if($result === true){
+                header('Location: /user/my-page');
+                exit();
+            }else{
+                $errorMessages['email'] = 'メールアドレスが既に使用されています。';
+                $_SESSION['errorMessages'] = $errorMessages;
+                $_SESSION['post'] = $_POST;
+                header('Location: /user/edit');
+            }
+        }
+      }
+
+      
 }

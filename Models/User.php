@@ -103,4 +103,63 @@ class User extends Db
           exit();
           }
     }
+
+    /**
+ * ユーザーの情報を更新する
+ * @param string $id 更新対象のユーザーID
+ * @param string $name 氏名
+ * @param string $kana ふりがな
+ * @param string $email メールアドレス
+ * @param string|null $password パスワード
+ * @return bool メールアドレス重複時は更新処理をせずfalseを返却する
+ */
+    public function update(string $id, string $name, string $kana, string $email, string $password = null): bool
+    {
+    try{
+        // 重複アドレスの確認 (メールアドレスが一意のためすでに使用されていた場合はエラーとする)
+        $query = 'SELECT COUNT(*) as count FROM users WHERE email = :email AND id <> :id';
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+        if($result->count == '0'){
+            // 重複がない場合は処理を続行
+            $this->dbh->beginTransaction();
+
+            $query =  'UPDATE users SET name = :name, kana = :kana, email = :email';
+            if(!empty($password)){
+                $query .= ', password = :password';
+            }
+            $query .= ' WHERE id = :id';
+            $stmt = $this->dbh->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':kana', $kana);
+            $stmt->bindParam(':email', $email);
+            if(!empty($password)) {
+								$hash = password_hash($password, PASSWORD_BCRYPT);
+                $stmt->bindParam(':password', $hash);
+            }
+            $stmt->execute();
+            // トランザクションを完了することでデータの書き込みを確定させる
+            $this->dbh->commit();
+            return true;
+        }else{
+        // メールアドレス検索の結果重複していた場合はfalseを返却
+        return false;
+    }
+    
+    
+    } catch (PDOException $e) {
+        // 不具合があった場合トランザクションをロールバックして変更をなかったコトにする。
+        $this->dbh->rollBack();
+        echo "登録失敗: " . $e->getMessage() . "\n";
+        exit();
+    }
+
+    }
+
+
 }

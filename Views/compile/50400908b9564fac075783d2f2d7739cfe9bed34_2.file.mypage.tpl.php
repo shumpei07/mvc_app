@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.2, created on 2023-09-08 08:33:45
+/* Smarty version 4.3.2, created on 2023-09-11 07:34:19
   from '/Applications/MAMP/htdocs/mvc_app/Views/user/mypage.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.2',
-  'unifunc' => 'content_64fadc69aae1a7_83489709',
+  'unifunc' => 'content_64fec2fbb24686_39742466',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '50400908b9564fac075783d2f2d7739cfe9bed34' => 
     array (
       0 => '/Applications/MAMP/htdocs/mvc_app/Views/user/mypage.tpl',
-      1 => 1694160960,
+      1 => 1694164004,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:layout/footer.tpl' => 1,
   ),
 ),false)) {
-function content_64fadc69aae1a7_83489709 (Smarty_Internal_Template $_smarty_tpl) {
+function content_64fec2fbb24686_39742466 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +66,7 @@ function content_64fadc69aae1a7_83489709 (Smarty_Internal_Template $_smarty_tpl)
                 </div>
 
                 <div class="edit-button">
-                    <a href="#" class="button">プロフィールの編集</a>
+                    <a href="/user/edit" class="button">プロフィールの編集</a>
                 </div>
             </div>
         <?php $_smarty_tpl->_subTemplateRender("file:layout/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

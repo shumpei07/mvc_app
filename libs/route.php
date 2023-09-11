@@ -37,6 +37,13 @@ function route($path, $httpMethod){
                   case ['my-page', 'get']:
                       $methodName ='myPage';
                       break;
+                  case ['edit', 'get']:
+                      $methodName = 'edit';
+                      break;
+                  case ['update', 'post']:
+                      $methodName = 'update';
+                      break;
+                  
                     }
                 break;
 
