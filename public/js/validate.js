@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const errMsgTel = document.querySelector('.error-text-tel');
       if (!tel.value) {
           errMsgTel.textContent = '電話番号が入力されていません';
-        }else if(tel.value.length == 11){
+        }else if(tel.value.length != 11){
           errMsgTel.textContent = '電話番号は11桁で入力してください';    
       } else {
           errMsgTel.textContent = '';
@@ -74,5 +74,14 @@ window.addEventListener('DOMContentLoaded', () => {
       } else {
           errMsgInquiry.textContent = '';
       }
+
+      if (errMsgName.textContent === '' && errMsgKana.textContent === '' && errMsgTel.textContent === '' && errMsgEmail.textContent === '' && errMsgInquiry.textContent === '') {
+        // すべてのエラーメッセージが空であれば、フォームの送信が成功したとみなし、
+        // ページを別の遷移先にリダイレクトするなどの処理を行うことができます。
+        // 以下は例です：
+    
+        // 送信ボタンがクリックされた後、遷移先にリダイレクト
+        window.location.href = '/contact/confirmation'; // 成功した場合の遷移先URL
+    }  
   }, false);
 }, false);
