@@ -49,10 +49,29 @@ function route($path, $httpMethod){
                     }
                 break;
 
+            case 'contact':
+              $controllerName = 'ContactController';
+              switch ($case) {
+                  case ['input', 'get']:
+                      $methodName = 'input';
+                      break;
+                  case ['input', 'post']:
+                      $methodName = 'validate';
+                      break;
+                  case ['confirmation', 'get']:
+                      $methodName = 'confirmation';
+                      break;
+                  case ['completion', 'post']:
+                      $methodName = 'completion';
+                      break;
+                    }
+                break;
+
             default:
                 $controllerName = '';
                 $methodName = '';
         }
+
         require_once (ROOT_PATH."Controllers/{$controllerName}.php");
 
         $obj = new $controllerName();

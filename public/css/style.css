@@ -121,6 +121,21 @@
 	.error-text {
 		color: red;
 	}
+	.error-text-name {
+		color: red;
+	}
+	.error-text-kana {
+		color: red;
+	}
+	.error-text-tel {
+		color: red;
+	}
+	.error-text-email {
+		color: red;
+	}
+	.error-text-inquiry {
+		color: red;
+	}
 	.red-border {
 		border: 1px solid red !important;
 	}

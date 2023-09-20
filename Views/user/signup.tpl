@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">メールアドレス</label>
-                    <input type="email" class="form-control"  name="email" placeholder="exemple@cin-group.co.jp" value="{$post['email']|default:''}">
+                    <input type="email" class="form-control"  name="email" placeholder="example@cin-group.co.jp" value="{$post['email']|default:''}">
                     <p class="error-text">{$errorMessages['email']|default:''}</p>
                 </div>
                 <div class="form-group">

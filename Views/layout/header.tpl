@@ -17,7 +17,7 @@
                         <a class="nav-link" href="#">Drink</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="/contact/index">お問合せ</a>
+                        <a class="nav-link" href="/contact/input">お問合せ</a>
                         </li>
 
                         <form class="d-flex">
