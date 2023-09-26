@@ -81,7 +81,10 @@ window.addEventListener('DOMContentLoaded', () => {
         // 以下は例です：
     
         // 送信ボタンがクリックされた後、遷移先にリダイレクト
+          document.getElementById('send').submit(); // フォームのIDを指定
+
         window.location.href = '/contact/confirmation'; // 成功した場合の遷移先URL
+
     }  
   }, false);
 }, false);

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.2, created on 2023-09-14 09:30:51
+/* Smarty version 4.3.2, created on 2023-09-26 07:36:24
   from '/Applications/MAMP/htdocs/mvc_app/Views/contact/confirmation.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.2',
-  'unifunc' => 'content_6502d2cbe562b3_76539564',
+  'unifunc' => 'content_651289f8326c82_25942015',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7e922cbbdf1fd4e35380fc1e61d2cc165491caa9' => 
     array (
       0 => '/Applications/MAMP/htdocs/mvc_app/Views/contact/confirmation.tpl',
-      1 => 1694683831,
+      1 => 1695713773,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6502d2cbe562b3_76539564 (Smarty_Internal_Template $_smarty_tpl) {
+function content_651289f8326c82_25942015 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="ja">
 <head>
@@ -58,18 +58,16 @@ function content_6502d2cbe562b3_76539564 (Smarty_Internal_Template $_smarty_tpl)
                     <input type="email" class="form-control"  name="email" value="<?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['post']->value['email'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
 "readonly>
                 </div>
-                
                 <div class="form-group">
                     <label for="inquiry">お問い合わせ内容</label>
-                    <textarea name="inquiry" class="form-control" name="inquiry" disabled><?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['post']->value['inquiry'], ENT_QUOTES, 'UTF-8');?>
+                    <textarea type="inquiry" class="form-control" name="inquiry" readonly style="white-space: pre-wrap;"><?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['post']->value['inquiry'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
 </textarea>
                 </div>
-
                 <div class>
                     <P>上記の内容でよろしいですか？</P>
                 </div>
-                <button class="btn bg-warning my-2" type="button" onclick="window.location.href='/contact/input'">キャンセル</button>
-                <button class="btn bg-warning my-2">送信</button>
+                <button class="btn bg-warning my-2" type="submit" formaction="/contact/cancel">キャンセル</button>
+                <button id='send' class="btn bg-warning my-2" type="submit" >送信</button>
             </form>
         </div>
     </div>

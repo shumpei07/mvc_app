@@ -1,17 +1,36 @@
 <?php
 require_once ROOT_PATH.'Controllers/Controller.php';
 
+require_once ROOT_PATH.'Models/Contact.php';
+
 class ContactController extends Controller
 {
+    private $name;
+    private $kana;
+    private $tel;
+    private $email;
+    private $inquiry;
+    
+
+    public function __construct()
+    {
+        // コンストラクター内でプロパティの初期化
+        $this->name = "";
+        $this->kana = "";
+        $this->tel = "";
+        $this->email = "";
+        $this->inquiry = "";
+    }
+
   public function validate()
     {
       // フォームがPOSTリクエストで送信された場合に実行される部分
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = $_POST["name"];
-        $name = $_POST["kana"];
-        $name = $_POST["tel"];
-        $name = $_POST["email"];
-        $name = $_POST["inquiry"];
+        $this->name    = $_POST["name"];
+        $this->kana    = $_POST["kana"];
+        $tel     = $_POST["tel"];
+        $this->email   = $_POST["email"];
+        $this->inquiry = $_POST["inquiry"];
 
         $errorMessages = [];
 
@@ -50,41 +69,76 @@ class ContactController extends Controller
 
     // エラーメッセージがある場合は、エラーメッセージをセッションに保存し、入力画面にリダイレクト
       if (!empty($errorMessages)) {
+        $_SESSION['errorMessages'] = $errorMessages;
+        $_SESSION['post'] = $_POST;
         $this->view('contact/input',['errorMessages' => $errorMessages, 'post' => $_POST]); 
-        exit;
-        // } else {
         // バリデーションに成功した場合、次の処理（データの保存など）を行う
         // ここでデータベースへの保存などを行うことができます
-        
+      
       }else{
+
         // POSTリクエスト以外の場合、通常の入力画面を表示する処理を追加できます
-        $_SESSION = $_POST; 
-        header("location: /contact/confirmation");
+        // $_SESSION = $_POST;         
+        // header("location: /contact/confirmation");
+        $this->view('contact/confirmation', ['post' => $_POST]);
       }
     }
     
   }
         public function input()
     {
+      if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        // GETメソッドの場合
+        // 何もPOSTデータを受け取らないので、$_POSTを空にセットします
+        $_SESSION = array();
+        
 
-       $this->view('contact/input');
+        // ビューを表示
+        $this->view('contact/input');
+      } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          // POSTメソッドの場合
+          // POSTデータを受け取り、それをビューに渡します
+          $postData = $_SESSION;
+          $this->view('contact/confirmation', ['post' => $postData]);
+      }
     }
         
 
 
 
-    public function confirmation()
+    // public function confirmation()
+    // {        
+
+    //   $postData = $_POST;
+
+    //   $this->view('contact/confirmation', ['post' => $postData]);
+    // }
+
+    public function cancel()
     {
-
-      $postData = $_SESSION;
-      
-
-      $this->view('contact/confirmation', ['post' => $postData]);
+      $postData = $_POST;
+      $this->view('contact/input', ['post' => $postData]);
     }
 
-
       public function completion()
-    {
+    {      
+        $this->name    = $_POST["name"];
+        $this->kana    = $_POST["kana"];
+        $this->tel     = $_POST["tel"];
+        $this->email   = $_POST["email"];
+        $this->inquiry = $_POST["inquiry"];
+
+      $contact = new Contact();            
+
+      $contact->save($this->name, $this->kana, $this->tel, $this->email, $this->inquiry);
+
+    
+
+      // $postData = $_SESSION;
+      // $errorMessages = $_SESSION['errorMessages'] ?? [];
+      // $post = $_SESSION['post'] ?? [];
+      // $_SESSION['errorMessages'] = [];
+      // $_SESSION['post'] = [];
       $this->view('contact/completion');
     }
   

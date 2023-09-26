@@ -58,12 +58,15 @@ function route($path, $httpMethod){
                   case ['input', 'post']:
                       $methodName = 'validate';
                       break;
-                  case ['confirmation', 'get']:
-                      $methodName = 'confirmation';
-                      break;
+                  // case ['confirmation', 'post']:
+                  //     $methodName = 'confirmation';
+                  //     break;
                   case ['completion', 'post']:
                       $methodName = 'completion';
                       break;
+                  case ['cancel', 'post']:
+                    $methodName = 'cancel';
+                    break;
                     }
                 break;
 

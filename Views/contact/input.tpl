@@ -37,13 +37,13 @@
                 
                 <div class="form-group">
                     <label for="inquiry">お問い合わせ内容</label>
-                    <textarea name="inquiry" class="form-control" value="{$post['inquiry']|default:''}"></textarea>
+                    <textarea name="inquiry" class="form-control" value="{$post['inquiry']|default:''}" style="white-space: pre-wrap;">{$post['inquiry']|default:''}</textarea>
                     <p class="error-text-inquiry">{$errorMessages['inquiry']|default:''}</p>
                 </div>
-                <button class="btn bg-warning my-2" type="submit">送信</button>
+                <button class="btn bg-warning my-2" type="submit" id ="submit">送信</button>
             </form>
         </div>
     </div>
-    <script src="../js/validate.js"></script>
+    <!-- <script src="../js/validate.js"></script> -->
 </body>
 </html>

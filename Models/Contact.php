@@ -17,45 +17,31 @@ class Contact extends Db
      * @param string $kana フリガナ
      * @param int    $tel  電話番号
      * @param string $email メールアドレス
-     * @return false|string 'ユーザーID' または メールアドレスが重複している場合はfalseを返却
+     * @param string $inquiry
+     * 
      */
-    public function input(string $name, string $kana, int $tel,string $email, )
+    public function save(string $name, string $kana, int $tel,string $email, string $inquiry)
     {
-        try{
-            // 重複アドレスの確認 (メールアドレスが一意のためすでに使用されていた場合はエラーとする)
-            $query = 'SELECT COUNT(*) as count FROM contacts WHERE email = :email';
-            $stmt = $this->dbh->prepare($query);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_OBJ);
-
-            if($result->count != 0){
-                // メールアドレス検索の結果重複していた場合はfalseを返却
-                return false;
-            }
-						
-            // 重複がない場合は処理を続行
+	try{
             $this->dbh->beginTransaction();
-            $query = 'INSERT INTO users (name, kana, tel, email) VALUES (:name, :kana, :tel, :email)';
+            $query = 'INSERT INTO contacts (name, kana, tel, email, body) VALUES (:name, :kana, :tel, :email, :inquiry)';
             $stmt = $this->dbh->prepare($query);
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
             $stmt->bindParam(':kana', $kana, PDO::PARAM_STR);
-            $stmt->bindParam(':tel', $tel, PDO::PARAM_STR);
+            $stmt->bindParam(':tel', $tel, PDO::PARAM_INT);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':inquiry',$inquiry, PDO::PARAM_STR);
             $stmt->execute();
-
             $lastId = $this->dbh->lastInsertId();
-
             // トランザクションを完了することでデータの書き込みを確定させる
             $this->dbh->commit();
-
             return $lastId;
-        } catch (PDOException $e) {
+
+        }catch(PDOException $e) {
             // 不具合があった場合トランザクションをロールバックして変更をなかったコトにする。
             $this->dbh->rollBack();
-            echo "登録失敗: " . $e->getMessage() . "\n";
+            ($e);
             exit();
         }
-
     }
 }

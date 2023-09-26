@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.2, created on 2023-09-07 07:50:39
+/* Smarty version 4.3.2, created on 2023-09-20 07:36:57
   from '/Applications/MAMP/htdocs/mvc_app/Views/user/signup.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.2',
-  'unifunc' => 'content_64f980cfed3b96_62612347',
+  'unifunc' => 'content_650aa119a67281_73697338',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6cd1058b873e5d9a2459a3b3eb68bd313fa54b48' => 
     array (
       0 => '/Applications/MAMP/htdocs/mvc_app/Views/user/signup.tpl',
-      1 => 1694069396,
+      1 => 1694510870,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_64f980cfed3b96_62612347 (Smarty_Internal_Template $_smarty_tpl) {
+function content_650aa119a67281_73697338 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="ja">
 <head>
@@ -53,7 +53,7 @@ function content_64f980cfed3b96_62612347 (Smarty_Internal_Template $_smarty_tpl)
                 </div>
                 <div class="form-group">
                     <label for="email">メールアドレス</label>
-                    <input type="email" class="form-control"  name="email" placeholder="exemple@cin-group.co.jp" value="<?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['post']->value['email'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
+                    <input type="email" class="form-control"  name="email" placeholder="example@cin-group.co.jp" value="<?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['post']->value['email'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
 ">
                     <p class="error-text"><?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['errorMessages']->value['email'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
 </p>

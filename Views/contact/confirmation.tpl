@@ -31,17 +31,15 @@
                     <label for="email">メールアドレス</label>
                     <input type="email" class="form-control"  name="email" value="{$post['email']|default:''}"readonly>
                 </div>
-                
                 <div class="form-group">
                     <label for="inquiry">お問い合わせ内容</label>
-                    <textarea name="inquiry" class="form-control" name="inquiry" disabled>{$post['inquiry']}</textarea>
+                    <textarea type="inquiry" class="form-control" name="inquiry" readonly style="white-space: pre-wrap;">{$post['inquiry']|default:''}</textarea>
                 </div>
-
                 <div class>
                     <P>上記の内容でよろしいですか？</P>
                 </div>
-                <button class="btn bg-warning my-2" type="button" onclick="window.location.href='/contact/input'">キャンセル</button>
-                <button class="btn bg-warning my-2">送信</button>
+                <button class="btn bg-warning my-2" type="submit" formaction="/contact/cancel">キャンセル</button>
+                <button id='send' class="btn bg-warning my-2" type="submit" >送信</button>
             </form>
         </div>
     </div>
