@@ -6,6 +6,22 @@
     <title>Casteria</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
 <div class="p-4 container-field form-orange">
@@ -44,6 +60,25 @@
             </form>
         </div>
     </div>
+    <table>
+        <tr>
+            <th>氏名</th>
+            <th>フリガナ</th>
+            <th>電話番号</th>
+            <th>メールアドレス</th>
+            <th>お問い合わせ内容</th>
+        </tr>
+            {foreach  $result as $contact}
+            <tr>
+                <td>{$contact['name']}</td>
+                <td>{$contact['kana']}</td>
+                <td>{$contact['tel']}</td>
+                <td>{$contact['email']}</td>
+                <td>{$contact['body']}</td>
+            </tr>
+            {/foreach} 
+    </table>
+    
     <!-- <script src="../js/validate.js"></script> -->
 </body>
 </html>

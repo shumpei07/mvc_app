@@ -139,7 +139,7 @@ class User extends Db
             $stmt->bindParam(':kana', $kana);
             $stmt->bindParam(':email', $email);
             if(!empty($password)) {
-								$hash = password_hash($password, PASSWORD_BCRYPT);
+				$hash = password_hash($password, PASSWORD_BCRYPT);
                 $stmt->bindParam(':password', $hash);
             }
             $stmt->execute();

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.2, created on 2023-09-26 07:37:35
+/* Smarty version 4.3.2, created on 2023-09-29 06:27:05
   from '/Applications/MAMP/htdocs/mvc_app/Views/contact/input.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.2',
-  'unifunc' => 'content_65128a3fae05a9_60602584',
+  'unifunc' => 'content_65166e39f2f9e9_33957317',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '50a4102a19779b34709d709364b63c9457992720' => 
     array (
       0 => '/Applications/MAMP/htdocs/mvc_app/Views/contact/input.tpl',
-      1 => 1695713848,
+      1 => 1695968824,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_65128a3fae05a9_60602584 (Smarty_Internal_Template $_smarty_tpl) {
+function content_65166e39f2f9e9_33957317 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="ja">
 <head>
@@ -29,6 +29,22 @@ function content_65128a3fae05a9_60602584 (Smarty_Internal_Template $_smarty_tpl)
     <title>Casteria</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
 <div class="p-4 container-field form-orange">
@@ -78,6 +94,37 @@ function content_65128a3fae05a9_60602584 (Smarty_Internal_Template $_smarty_tpl)
             </form>
         </div>
     </div>
+    <table>
+        <tr>
+            <th>氏名</th>
+            <th>フリガナ</th>
+            <th>電話番号</th>
+            <th>メールアドレス</th>
+            <th>お問い合わせ内容</th>
+        </tr>
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['result']->value, 'contact');
+$_smarty_tpl->tpl_vars['contact']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['contact']->value) {
+$_smarty_tpl->tpl_vars['contact']->do_else = false;
+?>
+            <tr>
+                <td><?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['contact']->value['name'], ENT_QUOTES, 'UTF-8');?>
+</td>
+                <td><?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['contact']->value['kana'], ENT_QUOTES, 'UTF-8');?>
+</td>
+                <td><?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['contact']->value['tel'], ENT_QUOTES, 'UTF-8');?>
+</td>
+                <td><?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['contact']->value['email'], ENT_QUOTES, 'UTF-8');?>
+</td>
+                <td><?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['contact']->value['body'], ENT_QUOTES, 'UTF-8');?>
+</td>
+            </tr>
+            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?> 
+    </table>
+    
     <!-- <?php echo '<script'; ?>
  src="../js/validate.js"><?php echo '</script'; ?>
 > -->
