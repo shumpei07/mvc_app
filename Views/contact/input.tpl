@@ -68,13 +68,25 @@
             <th>メールアドレス</th>
             <th>お問い合わせ内容</th>
         </tr>
-            {foreach  $result as $contact}
+            {foreach  $result as $row}
             <tr>
-                <td>{$contact['name']}</td>
-                <td>{$contact['kana']}</td>
-                <td>{$contact['tel']}</td>
-                <td>{$contact['email']}</td>
-                <td>{$contact['body']}</td>
+                <td>{$row['name']}</td>
+                <td>{$row['kana']}</td>
+                <td>{$row['tel']}</td>
+                <td>{$row['email']}</td>
+                <td style="white-space: pre-wrap;">{$row['body']}</td>
+                <td>                   
+                    <!-- <a href = "contact/update/{$contact['id']}" class="update" type="submit" name="update">編集</a> -->
+
+                   <form method="post" action="/contact/update">
+                       <button class="update" type="submit" name="update">編集</button>
+                   </form>
+               </td>
+               <td>
+                   <form method="post" action="/contact/delete">
+                       <button type="submit" name= "delete_id" class="delete-button" onclick="return confirm('本当に削除しますか?')">削除</button>
+                   </form>
+               </td>
             </tr>
             {/foreach} 
     </table>

@@ -109,17 +109,6 @@ class ContactController extends Controller
           $this->view('contact/input', ['post' => $postData]);
       }
     }
-        
-
-
-
-    // public function confirmation()
-    // {        
-
-    //   $postData = $_POST;
-
-    //   $this->view('contact/confirmation', ['post' => $postData]);
-    // }
 
     public function cancel()
     {
@@ -143,12 +132,6 @@ class ContactController extends Controller
       $this->view('contact/completion');
     }
   
-    // public function read()
-    // {
-    //   $contact = new Contact();
-    //   $result = $contact->read();
-    //   var_dump($result);
-    //   $this->view('contact/input',['result'=>$result]);
-    // }
+    
 
 } 

@@ -59,60 +59,44 @@ class Contact extends Db
         }
     }
 
-    // /**
-    // * お問い合わせ情報を取得して返却する
-    // * @param string $id お問い合わせID
-    // * @return stdClass object型で取得したお問い合わせのデータを返却する
-    // */
-    // public function read(string $id): stdClass
-    // {
-    //     try{
-    //       $query = 'SELECT * FROM contacts WHERE id = :id';
-    //       $stmt = $this->dbh->prepare($query);
-    //       $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    //       $stmt->execute();
-    //       return $stmt->fetch(PDO::FETCH_OBJ);
-    //     } catch (PDOException $e) {
-    //       echo $e->getMessage(). "\n";
-    //       exit();
-    //       }
-    // }
-    
-    // /**
-    //  * お問い合わせ情報を取得する
-    //  * @param string $id 更新対象のユーザーID
-    //  * @param string $name 氏名
-    //  * @param string $kana ふりがな
-    //  * @param string $email メールアドレス
-    //  * @param string|null $password パスワード
-    //  * @return bool メールアドレス重複時は更新処理をせずfalseを返却する
-    //  */
-    // public function edit(string $id, string $name, string $kana, int $tel, string $email, string $inquiry)
-    // {
-    // try{
-    //         $query =  ' contacts SET name = :name, kana = :kana, tel = :tel, email = :email, inquiry = :inquiry';
-            
-    //         $query .= ' WHERE id = :id';
-    //         $stmt = $this->dbh->prepare($query);
-    //         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    //         $stmt->bindParam(':name', $name);
-    //         $stmt->bindParam(':kana', $kana);
-    //         $stmt->bindParam(':email', $email);
-    //         if(!empty($password)) {
-    //                             $hash = password_hash($password, PASSWORD_BCRYPT);
-    //             $stmt->bindParam(':password', $hash);
-    //         }
-    //         $stmt->execute();
-    //         // トランザクションを完了することでデータの書き込みを確定させる
-    //         $this->dbh->commit();
-    //         return true;
+    public function update($id)
+{
+    try {
+        $query = 'SELECT * FROM contacts WHERE id = :id';
+        $stmt = $this->dbh->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT); // :id プレースホルダに $id の値をバインド
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        echo "取得失敗: " . $e->getMessage() . "\n";
+        exit();
+    }
+}
 
-    //     } catch (PDOException $e) {
-    //         // 不具合があった場合トランザクションをロールバックして変更をなかったコトにする。
-    //         $this->dbh->rollBack();
-    //         echo "登録失敗: " . $e->getMessage() . "\n";
-    //         exit();
-    //     }
-    // }
+    /**
+         * お問い合わせIDに対応するお問いあわせのデータをテーブルから削除する
+         * @param string $id contactID
+         * @return void
+         */
+        public function delete(string $id)
+        {
+            try{
+                $this->dbh->beginTransaction();
+                $query = 'DELETE FROM contacts WHERE id = :id';
+                $stmt = $this->dbh->prepare($query);
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt->execute();
+                $this->dbh->commit();
+                return;
+
+            } catch (PDOException $e) {
+                // 不具合があった場合トランザクションをロールバックして変更をなかったコトにする。
+                $this->dbh->rollBack();
+                echo "削除失敗: " . $e->getMessage() . "\n";
+                exit();
+            }
+        }
+
 
 }

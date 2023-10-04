@@ -58,24 +58,18 @@ function route($path, $httpMethod){
                   case ['input', 'post']:
                       $methodName = 'validate';
                       break;
-                  // case ['confirmation', 'post']:
-                  //     $methodName = 'confirmation';
-                  //     break;
                   case ['completion', 'post']:
                       $methodName = 'completion';
                       break;
                   case ['cancel', 'post']:
                     $methodName = 'cancel';
                     break;
-                  // case ['read', 'get']:
-                  //     $methodName = 'read';
-                  //      break;
-                  // case ['input', 'post']:
-                  //       $methodName = 'edit';
-                  //       break;
-                  // case ['input', 'post']:
-                  //       $methodName = 'edit';
-                  //       break;
+                  case ['update', 'post']:
+                        $methodName = 'update';
+                        break;
+                  case ['delete', 'post']:
+                        $methodName = 'delete';
+                        break;
                     }
                 break;
 
