@@ -32,8 +32,8 @@
                     <input type="email" class="form-control"  name="email" value="{$post['email']|default:''}"readonly>
                 </div>
                 <div class="form-group">
-                    <label for="inquiry">お問い合わせ内容</label>
-                    <textarea type="inquiry" class="form-control" name="inquiry" readonly style="white-space: pre-wrap;">{$post['inquiry']|default:''}</textarea>
+                    <label for="body">お問い合わせ内容</label>
+                    <textarea type="body" class="form-control" name="body" readonly style="white-space: pre-wrap;">{$post['body']|default:''}</textarea>
                 </div>
                 <div class>
                     <P>上記の内容でよろしいですか？</P>

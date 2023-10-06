@@ -28,7 +28,6 @@ window.addEventListener('DOMContentLoaded', () => {
           // フリガナ入力欄のチェック
       const kana = document.querySelector('input[name="kana"]');
       const errMsgKana = document.querySelector('.error-text-kana');
-      console.log(1);
       if (!kana.value) {
         errMsgKana.textContent = 'フリガナが入力されていません';
       }else if(kana.value.length > 10){
@@ -43,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
       if (!tel.value) {
           errMsgTel.textContent = '電話番号が入力されていません';
         }else if(tel.value.length != 11){
-          errMsgTel.textContent = '電話番号は11桁で入力してください';    
+          errMsgTel.textContent = '電話番号は11桁で入力してください';
       } else {
           errMsgTel.textContent = '';
       }
@@ -67,21 +66,21 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
       // お問い合わせ内容入力欄のチェック
-      const inquiry = document.querySelector('textarea[name="inquiry"]');
-      const errMsgInquiry = document.querySelector('.error-text-inquiry');
-      if (!inquiry.value) {
-          errMsgInquiry.textContent = 'お問い合わせ内容が入力されていません';
+      const body = document.querySelector('textarea[name="body"]');
+      const errMsgBody = document.querySelector('.error-text-body');
+      if (!body.value) {
+          errMsgBody.textContent = 'お問い合わせ内容が入力されていません';
       } else {
-          errMsgInquiry.textContent = '';
+          errMsgBody.textContent = '';
       }
 
-      if (errMsgName.textContent === '' && errMsgKana.textContent === '' && errMsgTel.textContent === '' && errMsgEmail.textContent === '' && errMsgInquiry.textContent === '') {
+      if (errMsgName.textContent === '' && errMsgKana.textContent === '' && errMsgTel.textContent === '' && errMsgEmail.textContent === '' && errMsgBody.textContent === '') {
         // すべてのエラーメッセージが空であれば、フォームの送信が成功したとみなし、
         // ページを別の遷移先にリダイレクトするなどの処理を行うことができます。
         // 以下は例です：
     
         // 送信ボタンがクリックされた後、遷移先にリダイレクト
-          document.getElementById('send').submit(); // フォームのIDを指定
+          document.getElement('contact').submit(); 
 
         window.location.href = '/contact/confirmation'; // 成功した場合の遷移先URL
 

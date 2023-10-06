@@ -28,7 +28,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-6 mx-auto col-md-8">
             <h2 class="mb-4">入力画面</h2>
-            <form action="/contact/input" method="post" class="bg-white p-3 rounded mb-5" >
+            <form id="contact" action="/contact/input" method="post" class="bg-white p-3 rounded mb-5" >
 
                 <div class="form-group">
                     <label for="name">氏名</label>
@@ -52,11 +52,11 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="inquiry">お問い合わせ内容</label>
-                    <textarea name="inquiry" class="form-control" value="{$post['inquiry']|default:''}" style="white-space: pre-wrap;">{$post['inquiry']|default:''}</textarea>
-                    <p class="error-text-inquiry">{$errorMessages['inquiry']|default:''}</p>
+                    <label for="body">お問い合わせ内容</label>
+                    <textarea name="body" class="form-control" value="{$post['body']|default:''}" style="white-space: pre-wrap;">{$post['body']|default:''}</textarea>
+                    <p class="error-text-body">{$errorMessages['body']|default:''}</p>
                 </div>
-                <button class="btn bg-warning my-2" type="submit" id ="submit">送信</button>
+                <button class="btn bg-warning my-2" type="submit">送信</button>
             </form>
         </div>
     </div>
@@ -68,17 +68,26 @@
             <th>メールアドレス</th>
             <th>お問い合わせ内容</th>
         </tr>
-            {foreach  $result as $contact}
+            {foreach  $result as $row}
             <tr>
-                <td>{$contact['name']}</td>
-                <td>{$contact['kana']}</td>
-                <td>{$contact['tel']}</td>
-                <td>{$contact['email']}</td>
-                <td>{$contact['body']}</td>
+                <td>{$row['name']}</td>
+                <td>{$row['kana']}</td>
+                <td>{$row['tel']}</td>
+                <td>{$row['email']}</td>
+                <td style="white-space: pre-wrap;">{$row['body']}</td>
+                <td>                   
+                   <form method="post" action="/contact/update">
+                       <button class="update_id" type="submit" name="update_id" value="{$row['id']}">編集</button>
+                   </form>
+               </td>
+               <td>
+                   <form method="post" action="/contact/delete">
+                       <button type="submit" name= "delete_id" class="delete-button" onclick="return confirm('本当に削除しますか?')" value="{$row['id']}">削除</button>
+                   </form>
+               </td>
             </tr>
             {/foreach} 
     </table>
-    
     <!-- <script src="../js/validate.js"></script> -->
 </body>
 </html>
