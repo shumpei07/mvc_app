@@ -67,15 +67,15 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
       // お問い合わせ内容入力欄のチェック
-      const inquiry = document.querySelector('textarea[name="inquiry"]');
-      const errMsgInquiry = document.querySelector('.error-text-inquiry');
-      if (!inquiry.value) {
-          errMsgInquiry.textContent = 'お問い合わせ内容が入力されていません';
+      const body = document.querySelector('textarea[name="body"]');
+      const errMsgInquiry = document.querySelector('.error-text-body');
+      if (!body.value) {
+          errMsgBody.textContent = 'お問い合わせ内容が入力されていません';
       } else {
-          errMsgInquiry.textContent = '';
+          errMsgBody.textContent = '';
       }
 
-      if (errMsgName.textContent === '' && errMsgKana.textContent === '' && errMsgTel.textContent === '' && errMsgEmail.textContent === '' && errMsgInquiry.textContent === '') {
+      if (errMsgName.textContent === '' && errMsgKana.textContent === '' && errMsgTel.textContent === '' && errMsgEmail.textContent === '' && errMsgBody.textContent === '') {
         // すべてのエラーメッセージが空であれば、フォームの送信が成功したとみなし、
         // ページを別の遷移先にリダイレクトするなどの処理を行うことができます。
         // 以下は例です：

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.2, created on 2023-10-04 05:11:44
+/* Smarty version 4.3.2, created on 2023-10-06 06:14:49
   from '/Applications/MAMP/htdocs/mvc_app/Views/contact/input.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.2',
-  'unifunc' => 'content_651cf4103bbb12_53396812',
+  'unifunc' => 'content_651fa5d9754b19_52842435',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '50a4102a19779b34709d709364b63c9457992720' => 
     array (
       0 => '/Applications/MAMP/htdocs/mvc_app/Views/contact/input.tpl',
-      1 => 1696396296,
+      1 => 1696572880,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_651cf4103bbb12_53396812 (Smarty_Internal_Template $_smarty_tpl) {
+function content_651fa5d9754b19_52842435 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="ja">
 <head>
@@ -83,11 +83,11 @@ function content_651cf4103bbb12_53396812 (Smarty_Internal_Template $_smarty_tpl)
                 </div>
                 
                 <div class="form-group">
-                    <label for="inquiry">お問い合わせ内容</label>
-                    <textarea name="inquiry" class="form-control" value="<?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['post']->value['inquiry'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
-" style="white-space: pre-wrap;"><?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['post']->value['inquiry'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
+                    <label for="body">お問い合わせ内容</label>
+                    <textarea name="body" class="form-control" value="<?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['post']->value['body'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
+" style="white-space: pre-wrap;"><?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['post']->value['body'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
 </textarea>
-                    <p class="error-text-inquiry"><?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['errorMessages']->value['inquiry'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
+                    <p class="error-text-body"><?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['errorMessages']->value['body'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
 </p>
                 </div>
                 <button class="btn bg-warning my-2" type="submit" id ="submit">送信</button>
@@ -120,16 +120,15 @@ $_smarty_tpl->tpl_vars['row']->do_else = false;
                 <td style="white-space: pre-wrap;"><?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['row']->value['body'], ENT_QUOTES, 'UTF-8');?>
 </td>
                 <td>                   
-                    <!-- <a href = "contact/update/<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['contact']->value['id'], ENT_QUOTES, 'UTF-8');?>
-" class="update" type="submit" name="update">編集</a> -->
-
                    <form method="post" action="/contact/update">
-                       <button class="update" type="submit" name="update">編集</button>
+                       <button class="update_id" type="submit" name="update_id" value="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['row']->value['id'], ENT_QUOTES, 'UTF-8');?>
+">編集</button>
                    </form>
                </td>
                <td>
                    <form method="post" action="/contact/delete">
-                       <button type="submit" name= "delete_id" class="delete-button" onclick="return confirm('本当に削除しますか?')">削除</button>
+                       <button type="submit" name= "delete_id" class="delete-button" onclick="return confirm('本当に削除しますか?')" value="<?php echo htmlspecialchars((string) $_smarty_tpl->tpl_vars['row']->value['id'], ENT_QUOTES, 'UTF-8');?>
+">削除</button>
                    </form>
                </td>
             </tr>

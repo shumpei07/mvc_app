@@ -13,33 +13,42 @@
     <div class="row justify-content-center">
         <div class="col-lg-6 mx-auto col-md-8">
             <h2 class="mb-4">更新画面</h2>
-            <form action="/contact/input" method="post" class="bg-white p-3 rounded mb-5" >
+            <form action="/contact/update" method="post" class="bg-white p-3 rounded mb-5" >
 
-                <div class="form-group">
-                    <label for="name">氏名</label>
-                    <input type="text" class="form-control" name="name" value="{$post['name']|default:''}">
-                </div>
-                <div class="form-group">
-                    <label for="furigana">フリガナ</label>
-                    <input type="text" class="form-control" name="kana" value="{$post['kana']|default:''}">
-                </div>
-                <div class="form-group">
-                    <label for="tel">電話番号</label>
-                    <input type="tel" class="form-control" name="tel" value="{$post['tel']|default:''}">
-                </div>
-                <div class="form-group">
-                    <label for="email">メールアドレス</label>
-                    <input type="email" class="form-control"  name="email" value="{$post['email']|default:''}">
-                </div>
-                <div class="form-group">
-                    <label for="inquiry">お問い合わせ内容</label>
-                    <textarea type="inquiry" class="form-control" name="inquiry" style="white-space: pre-wrap;">{$post['inquiry']|default:''}</textarea>
-                </div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" name="id"value="{$post['id']}">
+            </div>
+            <div class="form-group">
+                <label for="name">氏名</label>
+                <input type="text" class="form-control" name="name"value="{$post['name']|default:''}">
+                <p class="error-text-name">{$errorMessages['name']|default:''}</p>
+            </div>
+            <div class="form-group">
+                <label for="furigana">フリガナ</label>
+                <input type="text" class="form-control" name="kana" value="{$post['kana']|default:''}">
+                <p class="error-text-kana">{$errorMessages['kana']|default:''}</p>
+            </div>
+            <div class="form-group">
+                <label for="tel">電話番号</label>
+                <input type="tel" class="form-control" name="tel" value="{$post['tel']|default:''}">
+                <p class="error-text-tel">{$errorMessages['tel']|default:''}</p>
+            </div>
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" class="form-control"  name="email"  value="{$post['email']|default:''}">
+                <p class="error-text-email">{$errorMessages['email']|default:''}</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="body">お問い合わせ内容</label>
+                <textarea name="body" class="form-control" value="{$post['body']|default:''}" style="white-space: pre-wrap;">{$post['body']|default:''}</textarea>
+                <p class="error-text-body">{$errorMessages['body']|default:''}</p>
+            </div>
                 <div class>
                     <P>上記の内容でよろしいですか？</P>
                 </div>
                 <button class="btn bg-warning my-2" type="submit" formaction="/contact/cancel">キャンセル</button>
-                <button id='send' class="btn bg-warning my-2" type="submit" >送信</button>
+                <button id='send' class="btn bg-warning my-2" type="submit">送信</button>
             </form>
         </div>
     </div>

@@ -59,8 +59,8 @@ function content_651289f8326c82_25942015 (Smarty_Internal_Template $_smarty_tpl)
 "readonly>
                 </div>
                 <div class="form-group">
-                    <label for="inquiry">お問い合わせ内容</label>
-                    <textarea type="inquiry" class="form-control" name="inquiry" readonly style="white-space: pre-wrap;"><?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['post']->value['inquiry'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
+                    <label for="body">お問い合わせ内容</label>
+                    <textarea type="body" class="form-control" name="body" readonly style="white-space: pre-wrap;"><?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['post']->value['body'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
 </textarea>
                 </div>
                 <div class>

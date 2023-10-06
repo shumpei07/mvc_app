@@ -52,9 +52,9 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="inquiry">お問い合わせ内容</label>
-                    <textarea name="inquiry" class="form-control" value="{$post['inquiry']|default:''}" style="white-space: pre-wrap;">{$post['inquiry']|default:''}</textarea>
-                    <p class="error-text-inquiry">{$errorMessages['inquiry']|default:''}</p>
+                    <label for="body">お問い合わせ内容</label>
+                    <textarea name="body" class="form-control" value="{$post['body']|default:''}" style="white-space: pre-wrap;">{$post['body']|default:''}</textarea>
+                    <p class="error-text-body">{$errorMessages['body']|default:''}</p>
                 </div>
                 <button class="btn bg-warning my-2" type="submit" id ="submit">送信</button>
             </form>
@@ -76,15 +76,13 @@
                 <td>{$row['email']}</td>
                 <td style="white-space: pre-wrap;">{$row['body']}</td>
                 <td>                   
-                    <!-- <a href = "contact/update/{$contact['id']}" class="update" type="submit" name="update">編集</a> -->
-
                    <form method="post" action="/contact/update">
-                       <button class="update" type="submit" name="update">編集</button>
+                       <button class="update_id" type="submit" name="update_id" value="{$row['id']}">編集</button>
                    </form>
                </td>
                <td>
                    <form method="post" action="/contact/delete">
-                       <button type="submit" name= "delete_id" class="delete-button" onclick="return confirm('本当に削除しますか?')">削除</button>
+                       <button type="submit" name= "delete_id" class="delete-button" onclick="return confirm('本当に削除しますか?')" value="{$row['id']}">削除</button>
                    </form>
                </td>
             </tr>

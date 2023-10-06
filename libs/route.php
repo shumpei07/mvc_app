@@ -5,14 +5,14 @@ function route($path, $httpMethod){
         $case = [$method, $httpMethod];
         switch ($controller) {
             case 'home':
-                $controllerName = 'HomeController';
-                switch ($case) {
-                    case ['index', 'get']:
-                        $methodName = 'index';
-                        break;
-                    default:
-                        $controllerName = '';
-                        $methodName = '';
+              $controllerName = 'HomeController';
+              switch ($case) {
+                  case ['index', 'get']:
+                      $methodName = 'index';
+                      break;
+                      default:
+                      $controllerName = '';
+                      $methodName = '';
                 }
                 break;
 
@@ -50,24 +50,24 @@ function route($path, $httpMethod){
                 break;
 
             case 'contact':
-              $controllerName = 'ContactController';
-              switch ($case) {
-                  case ['input', 'get']:
-                      $methodName = 'input';
-                      break;
-                  case ['input', 'post']:
-                      $methodName = 'validate';
-                      break;
-                  case ['completion', 'post']:
-                      $methodName = 'completion';
-                      break;
-                  case ['cancel', 'post']:
-                    $methodName = 'cancel';
-                    break;
-                  case ['update', 'post']:
+                $controllerName = 'ContactController';
+                switch ($case) {
+                    case ['input', 'get']:
+                        $methodName = 'input';
+                        break;
+                    case ['input', 'post']:
+                        $methodName = 'validate';
+                        break;
+                    case ['completion', 'post']:
+                        $methodName = 'completion';
+                        break;
+                    case ['cancel', 'post']:
+                        $methodName = 'cancel';
+                        break;
+                    case ['update', 'post']:
                         $methodName = 'update';
                         break;
-                  case ['delete', 'post']:
+                    case ['delete', 'post']:
                         $methodName = 'delete';
                         break;
                     }
@@ -83,11 +83,10 @@ function route($path, $httpMethod){
         $obj = new $controllerName();
         $obj->$methodName();
     }
-
-      catch (Throwable $e) 
-      {
+    catch (Throwable $e) 
+    {
         error_log($e->getMessage());
         header("HTTP/1.0 404 Not Found");
-                              exit();
-      }
+        exit();
+    }
 }
