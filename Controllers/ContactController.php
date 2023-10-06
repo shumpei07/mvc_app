@@ -74,15 +74,8 @@ class ContactController extends Controller
         if (!empty($errorMessages)) {
           $_SESSION['errorMessages'] = $errorMessages;
           $_SESSION['post'] = $_POST;
-          $this->view('contact/input',['errorMessages' => $errorMessages, 'post' => $_POST, 'result' => $result]); 
-          // バリデーションに成功した場合、次の処理（データの保存など）を行う
-          // ここでデータベースへの保存などを行うことができます
-        
+          $this->view('contact/input',['errorMessages' => $errorMessages, 'post' => $_POST, 'result' => $result]);         
         }else{
-
-          // POSTリクエスト以外の場合、通常の入力画面を表示する処理を追加できます
-          // $_SESSION = $_POST;         
-          // header("location: /contact/confirmation");
           $this->view('contact/confirmation', ['post' => $_POST]);
         }
       }    

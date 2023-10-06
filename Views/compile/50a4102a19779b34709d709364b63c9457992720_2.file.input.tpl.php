@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.2, created on 2023-10-06 06:14:49
+/* Smarty version 4.3.2, created on 2023-10-06 07:31:30
   from '/Applications/MAMP/htdocs/mvc_app/Views/contact/input.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.2',
-  'unifunc' => 'content_651fa5d9754b19_52842435',
+  'unifunc' => 'content_651fb7d2c94731_86806537',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '50a4102a19779b34709d709364b63c9457992720' => 
     array (
       0 => '/Applications/MAMP/htdocs/mvc_app/Views/contact/input.tpl',
-      1 => 1696572880,
+      1 => 1696577196,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_651fa5d9754b19_52842435 (Smarty_Internal_Template $_smarty_tpl) {
+function content_651fb7d2c94731_86806537 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="ja">
 <head>
@@ -51,7 +51,7 @@ function content_651fa5d9754b19_52842435 (Smarty_Internal_Template $_smarty_tpl)
     <div class="row justify-content-center">
         <div class="col-lg-6 mx-auto col-md-8">
             <h2 class="mb-4">入力画面</h2>
-            <form action="/contact/input" method="post" class="bg-white p-3 rounded mb-5" >
+            <form id="contact" action="/contact/input" method="post" class="bg-white p-3 rounded mb-5" >
 
                 <div class="form-group">
                     <label for="name">氏名</label>
@@ -90,7 +90,7 @@ function content_651fa5d9754b19_52842435 (Smarty_Internal_Template $_smarty_tpl)
                     <p class="error-text-body"><?php echo htmlspecialchars((string) (($tmp = $_smarty_tpl->tpl_vars['errorMessages']->value['body'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp), ENT_QUOTES, 'UTF-8');?>
 </p>
                 </div>
-                <button class="btn bg-warning my-2" type="submit" id ="submit">送信</button>
+                <button class="btn bg-warning my-2" type="submit">送信</button>
             </form>
         </div>
     </div>
@@ -136,7 +136,6 @@ $_smarty_tpl->tpl_vars['row']->do_else = false;
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?> 
     </table>
-    
     <!-- <?php echo '<script'; ?>
  src="../js/validate.js"><?php echo '</script'; ?>
 > -->

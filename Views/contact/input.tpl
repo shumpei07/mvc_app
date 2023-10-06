@@ -28,7 +28,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-6 mx-auto col-md-8">
             <h2 class="mb-4">入力画面</h2>
-            <form action="/contact/input" method="post" class="bg-white p-3 rounded mb-5" >
+            <form id="contact" action="/contact/input" method="post" class="bg-white p-3 rounded mb-5" >
 
                 <div class="form-group">
                     <label for="name">氏名</label>
@@ -56,7 +56,7 @@
                     <textarea name="body" class="form-control" value="{$post['body']|default:''}" style="white-space: pre-wrap;">{$post['body']|default:''}</textarea>
                     <p class="error-text-body">{$errorMessages['body']|default:''}</p>
                 </div>
-                <button class="btn bg-warning my-2" type="submit" id ="submit">送信</button>
+                <button class="btn bg-warning my-2" type="submit">送信</button>
             </form>
         </div>
     </div>
@@ -88,7 +88,6 @@
             </tr>
             {/foreach} 
     </table>
-    
     <!-- <script src="../js/validate.js"></script> -->
 </body>
 </html>

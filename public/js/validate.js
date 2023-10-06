@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
       if (!tel.value) {
           errMsgTel.textContent = '電話番号が入力されていません';
         }else if(tel.value.length != 11){
-          errMsgTel.textContent = '電話番号は11桁で入力してください';    
+          errMsgTel.textContent = '電話番号は11桁で入力してください';
       } else {
           errMsgTel.textContent = '';
       }
@@ -68,7 +68,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       // お問い合わせ内容入力欄のチェック
       const body = document.querySelector('textarea[name="body"]');
-      const errMsgInquiry = document.querySelector('.error-text-body');
+      const errMsgBody = document.querySelector('.error-text-body');
       if (!body.value) {
           errMsgBody.textContent = 'お問い合わせ内容が入力されていません';
       } else {
@@ -81,7 +81,7 @@ window.addEventListener('DOMContentLoaded', () => {
         // 以下は例です：
     
         // 送信ボタンがクリックされた後、遷移先にリダイレクト
-          document.getElementById('send').submit(); // フォームのIDを指定
+          document.getElement('contact').submit(); 
 
         window.location.href = '/contact/confirmation'; // 成功した場合の遷移先URL
 
