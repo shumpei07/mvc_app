@@ -28,7 +28,6 @@ window.addEventListener('DOMContentLoaded', () => {
           // フリガナ入力欄のチェック
       const kana = document.querySelector('input[name="kana"]');
       const errMsgKana = document.querySelector('.error-text-kana');
-      console.log(1);
       if (!kana.value) {
         errMsgKana.textContent = 'フリガナが入力されていません';
       }else if(kana.value.length > 10){
