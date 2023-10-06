@@ -31,9 +31,9 @@ class ContactController extends Controller
       {
         $this->name    = $_POST["name"];
         $this->kana    = $_POST["kana"];
-        $tel     = $_POST["tel"];
+        $this->tel     = $_POST["tel"];
         $this->email   = $_POST["email"];
-        $this->body = $_POST["body"];
+        $this->body    = $_POST["body"];
 
         $errorMessages = [];
 
@@ -128,7 +128,6 @@ class ContactController extends Controller
       if ($contactId) {
         $result = $contact->show($contactId);
         $post =  $result["0"];
-        print_r($post['id']);
         $this->view('contact/update',['post' => $post]);
       
       } else {

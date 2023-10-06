@@ -15,12 +15,12 @@ class Contact extends Db
      *
      * @param string $name 氏名
      * @param string $kana フリガナ
-     * @param int    $tel  電話番号
+     * @param string $tel  電話番号
      * @param string $email メールアドレス
-     * @param string $body
+     * @param string $body お問い合せ内容
      * 
      */
-    public function save(string $name, string $kana, int $tel, string $email, string $body)
+    public function save(string $name, string $kana, string $tel, string $email, string $body)
     {
 	try{
           $this->dbh->beginTransaction();
@@ -28,7 +28,7 @@ class Contact extends Db
           $stmt = $this->dbh->prepare($query);
           $stmt->bindParam(':name',  $name,  PDO::PARAM_STR);
           $stmt->bindParam(':kana',  $kana,  PDO::PARAM_STR);
-          $stmt->bindParam(':tel',   $tel,   PDO::PARAM_INT);
+          $stmt->bindParam(':tel',   $tel,   PDO::PARAM_STR);
           $stmt->bindParam(':email', $email, PDO::PARAM_STR);
           $stmt->bindParam(':body',  $body,  PDO::PARAM_STR);
           $stmt->execute();
@@ -74,7 +74,7 @@ class Contact extends Db
         }
     }
 
-    public function edit(int $id,string $name, string $kana, int $tel,string $email, string $body)
+    public function edit(int $id,string $name, string $kana, string $tel,string $email, string $body)
     {
         try{
             $query = 'UPDATE contacts SET name = :name, kana = :kana, tel = :tel, email = :email, body = :body WHERE id = :id';
@@ -82,7 +82,7 @@ class Contact extends Db
             $stmt->bindParam(':id',    $id,    PDO::PARAM_INT); 
             $stmt->bindParam(':name',  $name,  PDO::PARAM_STR);
             $stmt->bindParam(':kana',  $kana,  PDO::PARAM_STR);
-            $stmt->bindParam(':tel',   $tel,   PDO::PARAM_INT);
+            $stmt->bindParam(':tel',   $tel,   PDO::PARAM_STR);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':body',  $body,  PDO::PARAM_STR);
             $stmt->execute();
